@@ -1,0 +1,45 @@
+repos:
+  -   repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.3.0
+      hooks:
+      -   id: check-yaml
+      -   id: check-json
+      -   id: end-of-file-fixer
+      -   id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: system
+        name: Black
+        entry: poetry run black .
+        pass_filenames: false
+        language: system
+  - repo: local
+    hooks:
+      - id: system
+        name: Isort
+        entry: poetry run isort . --profile black
+        pass_filenames: false
+        language: system
+  - repo: local
+    hooks:
+      - id: system
+        name: Flake8
+        entry: poetry run flake8 --max-line-length 88  # 88 since it is the default in black
+        pass_filenames: false
+        language: system
+  - repo: local
+    hooks:
+      - id: system
+        name: Mypy
+        entry: poetry run mypy
+        pass_filenames: false
+        language: system
+  - repo: local
+    hooks:
+      - id: system
+        name: Pylint
+        entry: poetry run pylint main.py files_downloader
+        args: ["--disable=C0114,C0115,C0116"]
+        pass_filenames: false
+        language: system
+
