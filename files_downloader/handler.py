@@ -29,7 +29,7 @@ def handler(
 ):  # pylint: disable=R0913
     os.makedirs(output_dir, exist_ok=True)
     display = Display(logger, display_progress, display_summary, verbose)
-    reader = FileReader(file)
+    reader = FileReader()
     writer = FileWriter(output_dir)
     downloader = Downloader(display, reader, writer)
     results = asyncio.run(downloader.download(file, limit))

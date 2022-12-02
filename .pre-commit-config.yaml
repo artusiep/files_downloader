@@ -42,4 +42,3 @@ repos:
         args: ["--disable=C0114,C0115,C0116"]
         pass_filenames: false
         language: system
-

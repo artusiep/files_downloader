@@ -19,7 +19,9 @@ class FileWriter(Writer):
             return Path(output_dir, str(index) + extension)
         return Path(output_dir, str(index))
 
-    async def save(self, index, response, data, *args, **kwargs) -> Any:
+    async def save(
+        self, index: int, response: Response, data: bytes | bytearray, *args, **kwargs
+    ) -> Any:
         filepath_with_extension = self.get_filepath_with_extension(
             self.destination, index, response
         )

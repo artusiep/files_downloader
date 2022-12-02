@@ -2,7 +2,7 @@
 
 Python script that downloads files from the internet and saves them in a download directory.
 
-The list of URLs to download will be provided in a simple text file. 
+The list of URLs to download will be provided in a simple text file.
 URLs are separated by a newline. Assume that the files are small, so downloading them does not require streaming.
 
 Example input.txt:

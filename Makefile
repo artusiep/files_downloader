@@ -3,3 +3,6 @@ pre-commit:
 
 run:
 	python main.py data/input/example.txt data/output -p -s
+
+count-lines:
+	pygount --format=summary .
