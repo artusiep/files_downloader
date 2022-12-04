@@ -14,7 +14,7 @@ from files_downloader.writer.abstract import Writer
 
 
 class Downloader:
-    retryable_status_codes = [408, 429, 500, 502, 503, 503]
+    retryable_status_codes = [408, 429, 500, 502, 503]
 
     def __init__(self, display: Display, reader: Reader, writer: Writer):
         self.display = display
@@ -105,9 +105,6 @@ class Downloader:
             )
             self.display.error(message)
             return Failed(index=index, url=url, message=message)
-
-        if index == 5:
-            return Failed(index=index, url=url, message="BLAH")
 
         if data == b"":
             message = f"Downloading file from {url} failed. Empty Content"

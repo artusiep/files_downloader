@@ -22,11 +22,14 @@ from files_downloader.reader.file_reader import FileReader
         (Path("resources/input/empty.txt"), []),
     ],
 )
-async def test_file_reader(file_path: Path, expected_result: list[tuple[int, str]]):
+async def test_file_reader(
+    file_path: Path, expected_result: list[tuple[int, str]], test_directory
+):
     # GIVEN
     file_reader = FileReader()
+    path = Path(test_directory, file_path)
     # WHEN
-    urls = await file_reader.read(file_path)
+    urls = await file_reader.read(path)
     # THEN
     assert len(urls) == len(expected_result)
     assert urls == expected_result
@@ -40,9 +43,10 @@ async def test_file_reader(file_path: Path, expected_result: list[tuple[int, str
         (Path("resources/input"), IsADirectoryError),
     ],
 )
-async def test_file_reader_with_exception(file_path: Path, exception):
+async def test_file_reader_with_exception(file_path: Path, exception, test_directory):
     # GIVEN
     file_reader = FileReader()
+    path = Path(test_directory, file_path)
     # WHEN & THEN
     with pytest.raises(exception):
-        await file_reader.read(file_path)
+        await file_reader.read(path)
