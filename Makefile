@@ -1,12 +1,15 @@
 .PHONY: install
 install:
-	@if brew ls --versions pre-commit > /dev/null; then \
-	  echo "Pre commit is installed."; \
-	else brew install pre-commit; \
-	fi
 	pre-commit install
 	poetry install
 	poetry shell
+
+.PHONY: install-pre-commit-mac-os
+install-pre-commit-mac-os:
+	@if brew ls --versions pre-commit > /dev/null; then \
+		echo "Pre commit is installed."; \
+		else brew install pre-commit; \
+	fi
 
 .PHONY: pre-commit
 pre-commit:
